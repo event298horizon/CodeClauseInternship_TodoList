@@ -7,6 +7,7 @@ const App = () => {
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
 
+
   let task;
   const HandleInput = (e) => {
     task = e.target.value;
@@ -39,10 +40,15 @@ const App = () => {
     // setTodoList([...todoList, taskToDel]);
   };
 
+  const clearAll = () => {
+    setTodoList([]);
+  }
+
   return (
     <>
       <div className="bigContainer">
         <div className="littleContainer">
+
           <div className="addTodo">
             <input
               type="text"
@@ -55,6 +61,7 @@ const App = () => {
               <i className="fa fa-plus"></i>
             </button>
           </div>
+          <button className="clearAll" id="clearAll" onClick={clearAll}>Clear All</button>
           <div className="todoList">
             {todoList.map((todo, key) => {
               return <Todo key={key} todo={todo} deleteTask={deleteTask} />;
